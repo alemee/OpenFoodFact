@@ -2,9 +2,6 @@
 if($this->input->post('nom')!=null){
 	echo validation_errors(); 	
 }
-var_dump($infos['ingredients']);
-echo "<br>";
-var_dump($specs);
 ?>
 <!-- multistep form -->
 <?php echo form_open('product/edit/'.$infos['prod'][0]['id'],'id="msform"') ?>
@@ -24,7 +21,7 @@ var_dump($specs);
 		<input type="text" name="marque" placeholder="Marque (*)" value="<?php echo empty($infos['prod'][0]['marque'])?'':$infos['prod'][0]['marque'] ?>"/><br>
 		<input type="text" name="quantite" placeholder="Quantité" value="<?php echo empty($infos['prod'][0]['quantite'])?'':$infos['prod'][0]['quantite'] ?>"/><br>
 		<input type="text" name="pays" placeholder="Pays (*)" value="<?php echo empty($infos['pays'][0]['pays'])?'':$infos['pays'][0]['pays'] ?>"/><br>
-		<input type="text" name="categories" placeholder="Catégorie(s) (split on ',')" value="<?php echo empty($infos['categories'][0]['categories'])?'':$infos['categories'][0]['categories'] ?>"/><br>
+		<input type="text" name="categories" placeholder="Catégorie(s) (split on ',')" value="<?php echo empty($infos['categories'][0]['categorie'])?'':$infos['categories'][0]['categorie'] ?>"/><br>
 		<input type="button" name="next" class="next action-button" value="Suivant" />
 	</fieldset>
 
@@ -62,46 +59,46 @@ if(!empty($infos['additifs'])){
 	<fieldset>
 		<h2 class="fs-title">Valeurs nutritionnelles pour 100g (en g)</h2>
 	    <h3 class="fs-subtitle">Ceci est l'étape 3</h3>
-		<input type="texte" name="nutriscore" placeholder="Nutriscore (a,b,c,d,e)" value="<?php echo empty($infos['valeurs'][0]['nutriscore'])?'':$infos['valeurs'][0]['nutriscore'] ?>"/><br>
-		<input type="number" name="energy" step="0.001" placeholder="Energy" value="<?php echo empty($infos['valeurs'][0]['energy'])?'':$infos['valeurs'][0]['energy'] ?>"/><br>
-		<input type="number" name="glucides" step="0.001" placeholder="Glucides" value="<?php echo empty($infos['valeurs'][0]['glucides'])?'':$infos['valeurs'][0]['glucides'] ?>"/><br>
-		<input type="number" name="sucre" step="0.001" placeholder="dont sucres"value="<?php echo empty($infos['valeurs'][0]['sucre'])?'':$infos['valeurs'][0]['sucre'] ?>"/><br>
-		<input type="number" name="lipides" step="0.001" placeholder="Lipides" value="<?php echo empty($infos['valeurs'][0]['lipides'])?'':$infos['valeurs'][0]['lipides'] ?>"/><br>
-		<input type="number" name="gras_sature" step="0.001" placeholder="dont acides gras saturés" value="<?php echo empty($infos['valeurs'][0]['gras_sature'])?'':$infos['valeurs'][0]['gras_sature'] ?>"/><br>
-		<input type="number" name="proteines" step="0.001" placeholder="Protéines" value="<?php echo empty($infos['valeurs'][0]['proteines'])?'':$infos['valeurs'][0]['proteines'] ?>"/><br>
-		<input type="number" name="fibres" step="0.001" placeholder="Fibres alimentaires" value="<?php echo empty($infos['valeurs'][0]['fibres'])?'':$infos['valeurs'][0]['fibres'] ?>"/><br>
-		<input type="number" name="sel" step="0.001" placeholder="Sel" value="<?php echo empty($infos['valeurs'][0]['sel'])?'':$infos['valeurs'][0]['sel'] ?>"/><br>
+		<input type="texte" name="nutriscore" placeholder="Nutriscore (a,b,c,d,e)" value="<?php echo empty($specs['valeurs'][0]['nutriscore'])?'':$specs['valeurs'][0]['nutriscore'] ?>"/><br>
+		<input type="number" name="energy" step="0.001" min="0"  placeholder="Energy" value="<?php echo empty($specs['valeurs'][0]['energy'])?'':$specs['valeurs'][0]['energy'] ?>"/><br>
+		<input type="number" name="glucides" step="0.001" min="0"  placeholder="Glucides" value="<?php echo empty($specs['valeurs'][0]['glucides'])?'':$specs['valeurs'][0]['glucides'] ?>"/><br>
+		<input type="number" name="sucre" step="0.001" min="0"  placeholder="dont sucres"value="<?php echo empty($specs['valeurs'][0]['sucre'])?'':$specs['valeurs'][0]['sucre'] ?>"/><br>
+		<input type="number" name="lipides" step="0.001" min="0"  placeholder="Lipides" value="<?php echo empty($specs['valeurs'][0]['lipides'])?'':$specs['valeurs'][0]['lipides'] ?>"/><br>
+		<input type="number" name="gras_sature" step="0.001" min="0"  placeholder="dont acides gras saturés" value="<?php echo empty($specs['valeurs'][0]['gras_sature'])?'':$specs['valeurs'][0]['gras_sature'] ?>"/><br>
+		<input type="number" name="proteines" step="0.001" min="0"  placeholder="Protéines" value="<?php echo empty($specs['valeurs'][0]['proteines'])?'':$specs['valeurs'][0]['proteines'] ?>"/><br>
+		<input type="number" name="fibres" step="0.001" min="0"  placeholder="Fibres alimentaires" value="<?php echo empty($specs['valeurs'][0]['fibres'])?'':$specs['valeurs'][0]['fibres'] ?>"/><br>
+		<input type="number" name="sel" step="0.001" min="0"  placeholder="Sel" value="<?php echo empty($specs['valeurs'][0]['sel'])?'':$specs['valeurs'][0]['sel'] ?>"/><br>
 		<input type="button" name="previous" class="previous action-button" value="Précédant" />
 		<input type="button" name="next" class="next action-button" value="Suivant" />
 	</fieldset>
 
 	<fieldset>
-		<h2 class="fs-title">Vitamines pour 100g (en g)</h2>
+		<h2 class="fs-title">Vitamines pour 100g (en mg)</h2>
 	    <h3 class="fs-subtitle">Ceci est l'étape 4</h3>
-		<input type="number" name="vitamine_a" step="0.001" placeholder="Vitamine A" value="<?php echo set_value('vitamine_a');?>"/><br>
-		<input type="number" name="vitamine_b1" step="0.001" placeholder="Vitamine B1" value="<?php echo set_value('vitamine_b1');?>"/><br>
-		<input type="number" name="vitamine_b2" step="0.001" placeholder="Vitamine B2" value="<?php echo set_value('vitamine_b2');?>"/><br>
-		<input type="number" name="vitamine_pp" step="0.001" placeholder="Vitamine PP" value="<?php echo set_value('vitamine_pp');?>"/><br>
-		<input type="number" name="vitamine_b6" step="0.001" placeholder="Vitamine B6" value="<?php echo set_value('vitamine_b6');?>"/><br>
-		<input type="number" name="vitamine_b9" step="0.001" placeholder="Vitamine B9" value="<?php echo set_value('vitamine_b9');?>"/><br>
-		<input type="number" name="vitamine_b12" step="0.001" placeholder="Vitamine B12" value="<?php echo set_value('vitamine_b12');?>"/><br>
-		<input type="number" name="vitamine_c" step="0.001" placeholder="Vitamine C" value="<?php echo set_value('vitamine_c');?>"/><br>
-		<input type="number" name="vitamine_d" step="0.001" placeholder="Vitamine D" value="<?php echo set_value('vitamine_d');?>"/><br>
-		<input type="number" name="vitamine_e" step="0.001" placeholder="Vitamine E" value="<?php echo set_value('vitamine_e');?>"/><br>
-		<input type="number" name="vitamine_k" step="0.001" placeholder="Vitamine K" value="<?php echo set_value('vitamine_k');?>"/><br>
+		<input type="number" name="vitamine_a" step="0.001" min="0"  placeholder="Vitamine A" value="<?php echo empty($specs['vitamines'][0]['vitamine_a'])?'':$specs['vitamines'][0]['vitamine_a'] ?>"/><br>
+		<input type="number" name="vitamine_b1" step="0.001" min="0"  placeholder="Vitamine B1" value="<?php echo empty($specs['vitamines'][0]['vitamine_b1'])?'':$specs['vitamines'][0]['vitamine_b1'] ?>"/><br>
+		<input type="number" name="vitamine_b2" step="0.001" min="0"  placeholder="Vitamine B2" value="<?php echo empty($specs['vitamines'][0]['vitamine_b2'])?'':$specs['vitamines'][0]['vitamine_b2'] ?>"/><br>
+		<input type="number" name="vitamine_pp" step="0.001" min="0"  placeholder="Vitamine PP" value="<?php echo empty($specs['vitamines'][0]['vitamine_pp'])?'':$specs['vitamines'][0]['vitamine_pp'] ?>"/><br>
+		<input type="number" name="vitamine_b6" step="0.001" min="0"  placeholder="Vitamine B6" value="<?php echo empty($specs['vitamines'][0]['vitamine_b6'])?'':$specs['vitamines'][0]['vitamine_b6'] ?>"/><br>
+		<input type="number" name="vitamine_b9" step="0.001" min="0"  placeholder="Vitamine B9" value="<?php echo empty($specs['vitamines'][0]['vitamine_b9'])?'':$specs['vitamines'][0]['vitamine_b9'] ?>"/><br>
+		<input type="number" name="vitamine_b12" step="0.001" min="0"  placeholder="Vitamine B12" value="<?php echo empty($specs['vitamines'][0]['vitamine_b12'])?'':$specs['vitamines'][0]['vitamine_b12'] ?>"/><br>
+		<input type="number" name="vitamine_c" step="0.001" min="0"  placeholder="Vitamine C" value="<?php echo empty($specs['vitamines'][0]['vitamine_c'])?'':$specs['vitamines'][0]['vitamine_c'] ?>"/><br>
+		<input type="number" name="vitamine_d" step="0.001" min="0"  placeholder="Vitamine D" value="<?php echo empty($specs['vitamines'][0]['vitamine_d'])?'':$specs['vitamines'][0]['vitamine_d'] ?>"/><br>
+		<input type="number" name="vitamine_e" step="0.001" min="0"  placeholder="Vitamine E" value="<?php echo empty($specs['vitamines'][0]['vitamine_e'])?'':$specs['vitamines'][0]['vitamine_e'] ?>"/><br>
+		<input type="number" name="vitamine_k" step="0.001" min="0"  placeholder="Vitamine K" value="<?php echo empty($specs['vitamines'][0]['vitamine_k'])?'':$specs['vitamines'][0]['vitamine_k'] ?>"/><br>
 		<input type="button" name="previous" class="previous action-button" value="Précédant" />
 		<input type="button" name="next" class="next action-button" value="Suivant" />
 	</fieldset>
 
 	<fieldset>
-		<h2 class="fs-title">Mineraux pour 100g (en g)</h2>
+		<h2 class="fs-title">Mineraux pour 100g (en mg)</h2>
 	    <h3 class="fs-subtitle">Ceci est l'étape 5</h3>
-		<input type="number" name="sodium" step="0.001" placeholder="Sodium" value="<?<?php echo empty($infos['prod'][0]['aa']);?>"/><br>
-		<input type="number" name="potassium" step="0.001" placeholder="Potassium" value="<?<?php echo empty($infos['prod'][0]['aa']);?>"/><br>
-		<input type="number" name="calcium" step="0.001" placeholder="Calcium" value="<?<?php echo empty($infos['prod'][0]['aa']);?>"/><br>
-		<input type="number" name="fer" step="0.001" placeholder="Fer" value="<?<?php echo empty($infos['prod'][0]['aa']);?>"/><br>
-		<input type="number" name="magnesium" step="0.001" placeholder="Magnesium" value="<?<?php echo empty($infos['prod'][0]['aa']);?>"/><br>
-		<input type="number" name="zinc" step="0.001" placeholder="Zinc" value="<?<?php echo empty($infos['prod'][0]['aa']);?>"/><br>
+		<input type="number" name="sodium" step="0.001" min="0"  placeholder="Sodium" value="<?php echo empty($specs['mineraux'][0]['sodium'])?'':$specs['mineraux'][0]['sodium'] ?>"/><br>
+		<input type="number" name="potassium" step="0.001" min="0"  placeholder="Potassium" value="<?php echo empty($specs['mineraux'][0]['potassium'])?'':$specs['mineraux'][0]['potassium'] ?>"/><br>
+		<input type="number" name="calcium" step="0.001" min="0"  placeholder="Calcium" value="<?php echo empty($specs['mineraux'][0]['calcium'])?'':$specs['mineraux'][0]['calcium'] ?>"/><br>
+		<input type="number" name="fer" step="0.001" min="0"  placeholder="Fer" value="<?php echo empty($specs['mineraux'][0]['fer'])?'':$specs['mineraux'][0]['fer'] ?>"/><br>
+		<input type="number" name="magnesium" step="0.001" min="0"  placeholder="Magnesium" value="<?php echo empty($specs['mineraux'][0]['magnesium'])?'':$specs['mineraux'][0]['magnesium'] ?>"/><br>
+		<input type="number" name="zinc" step="0.001" min="0"  placeholder="Zinc" value="<?php echo empty($specs['mineraux'][0]['zinc'])?'':$specs['mineraux'][0]['zinc'] ?>"/><br>
 		<input type="button" name="previous" class="previous action-button" value="Précédant" />
 		<input type="submit" class="action-button" value="Ajouter" />
 	</fieldset>

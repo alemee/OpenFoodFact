@@ -197,7 +197,9 @@ class Product extends CI_Controller {
 			$magnesium=empty($this->input->post('magnesium')) ? NULL : $this->input->post('magnesium');
 			$zinc=empty($this->input->post('zinc')) ? NULL : $this->input->post('zinc');
 
+            
 			$this->product_model->add($nom,$marque,$quantite,$pays,$categories,$ingredients,$additifs,$nutriscore,$energy,$glucides,$sucre,$lipides,$gras_sature,$proteines,$fibres,$sel,$vitamine_a,$vitamine_b1,$vitamine_b2,$vitamine_pp,$vitamine_b6,$vitamine_b9,$vitamine_b12,$vitamine_c,$vitamine_d,$vitamine_e,$vitamine_k,$sodium,$potassium,$calcium,$fer,$magnesium,$zinc);
+            $this->product_model->delete($id);
 			$data['success']='Produit modifié avec succès !';
 			redirect('user/membres');
 		}

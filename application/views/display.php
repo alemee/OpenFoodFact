@@ -14,47 +14,47 @@
 <?php
 foreach ($infos['prod'][0] as $index=>$content) {
   if(!empty($content) && $index!='id')
-    echo $content."<br><br>";
+    echo "<p>".$content."</p>";
 }
 
 if(!empty($infos['categories'])){
-  echo "Categories : "; $i=0;
+  echo "<p>Categories : "; $i=0;
   foreach ($infos['categories'] as $array) {
     if($i!=0) echo ", ";
     echo $array['categorie'];
     $i++;
   }
-  echo ".<br>";
+  echo ".</p>";
 }
 
 if(!empty($infos['pays'])){
-  echo "Pays : "; $i=0;
+  echo "<p>Pays : "; $i=0;
   foreach ($infos['pays'] as $array) {
     if($i!=0) echo ", ";
     echo $array['pays'];
     $i++;
   }
-  echo ".<br>";
+  echo ".</p>";
 }
 
 if(!empty($infos['ingredients'])){
-  echo "Liste des ingredients : "; $i=0;
+  echo "<p>Liste des ingredients : "; $i=0;
   foreach ($infos['ingredients'] as $array) {
     if($i!=0) echo ", ";
     echo $array['ingredient'];
     $i++;
   }
-  echo ".<br>";
+  echo ".</p>";
 }
 
 if(!empty($infos['additifs'])){
-  echo "Liste des additifs : "; $i=0;
+  echo "<p>Liste des additifs : "; $i=0;
   foreach ($infos['additifs'] as $array) {
     if($i!=0) echo ", ";
     echo $array['additif'];
     $i++;
   }
-  echo ".<br>";
+  echo ".</p>";
 }
 ?>
 
